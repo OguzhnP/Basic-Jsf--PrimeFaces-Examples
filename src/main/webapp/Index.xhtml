@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    
+>
+    <h:head>
+        <title>Sign In My Heart</title>
+    </h:head>
+    <h:body style="background-color:#E2DCC8;">
+    <script type="text/javascript">
+    //<![CDATA[
+    function handleForm(xhr, status, args) {
+        if (args.validationFailed)
+            PF('spot').show();
+        else
+            PF('spot').hide();
+    }
+
+    //]]>
+</script>
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+     
+    .ui-datatable {
+        margin-bottom: 25px
+    }
+     
+    .ui-datatable .ui-datatable-footer {
+        text-align:left;
+    }
+     
+    .ui-datalist ul {
+        padding: 0 0 0 10px;
+        margin: 5px 0;
+    }
+     
+    .ui-datatable .ui-button-icon-only .ui-button-text {
+        padding: 0;
+        line-height: 1.2;
+    }
+</style>
+
+			<div>
+				<h:form style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; background-color: #E7F6F2;">
+			        <p:breadCrumb>
+			            <p:menuitem outcome="Index.xhtml" value="Home"/>
+			            <p:menuitem outcome="Login.xhtml" value="Log In"/>
+			            <p:menuitem outcome="ShowDoc.xhtml" value="Show Documentation"/>
+			             <p:menuitem outcome="Upload.xhtml" value="Upload Image"/>
+			        </p:breadCrumb>
+			    </h:form>
+
+			</div>
+
+
+
+
+  		<div class="ui-fluid" >
+		   <h:form id="formId"  >
+			   <p:growl >
+			        <p:autoUpdate />
+			    </p:growl>
+			        <p:panel id="basic" header="Personal Information" style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; "   >
+				        <h:panelGroup header="Kişisel Bilgiler" id="panel1" styleClass="p-mb-5" >
+					        <p:panelGrid columns="4"  columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" >
+					        	
+					        	
+					            <h3 class="p-mt-0">Name:</h3>  
+							    <p:inputText id="name" value="#{helloBean.name}" required="true" />
+					            
+					            <h3 class="p-mt-0">Surname:</h3>  
+							    <p:inputText id="surname" value="#{helloBean.surname}" required="true"/>
+							    
+							    <h3 class="p-mt-0">Password:</h3> 
+							    <p:inputText id="password" value="#{helloBean.password}" type="password" required="true"/>
+					
+					            <h3 class="p-mt-0">Birthday:</h3>  
+								<p:inputMask id="birthday" value="#{helloBean.birthday}" mask="99/99/9999" />  
+								
+								<h3 class="p-mt-0">Phone:</h3>  
+								<p:inputMask id="phone" value="#{helloBean.phone}" mask="(999) 999-9999" />	
+								
+								<h3 class="p-mt-0">Gender:</h3>
+						        <p:selectOneRadio id="Gender" value="#{helloBean.gender}" unselectable="true">
+						            <f:selectItem itemLabel="Male" itemValue="Male"/>
+						            <f:selectItem itemLabel="Female" itemValue="Female"/>
+						        </p:selectOneRadio>
+						        
+						        <h3 class="p-mt-0">Marriage:</h3>
+						        <p:toggleSwitch value="#{helloBean.marriage}"/>
+						        
+						        <h3 class="p-mt-0">Country:</h3>
+				                <p:selectOneMenu id="selectedOption" value="#{helloBean.selectedOption}">
+				                    <f:selectItem itemLabel="Select One" itemValue=""/>
+				                    <f:selectItem itemLabel="Turkey" itemValue="Turkey"/>
+				                    <f:selectItem itemLabel="England" itemValue="England"/>
+				                    <f:selectItem itemLabel="Usa" itemValue="Usa"/>
+				                    <f:selectItem itemLabel="Germany" itemValue="Germany"/>
+				                    <f:selectItem itemLabel="Norway" itemValue="Norway"/>
+				                    <f:selectItem itemLabel="China" itemValue="China"/>
+				                    <f:selectItem itemLabel="French" itemValue="French"/>
+				                    <f:selectItem itemLabel="Russia" itemValue="Russia"/>
+				                    <f:selectItem itemLabel="Australia" itemValue="Australia"/>  
+				                    <f:selectItem itemLabel="Italy" itemValue="Italy"/>  
+				                    <f:selectItem itemLabel="India" itemValue="India"/>  
+				                    <f:selectItem itemLabel="Japan" itemValue="Japan"/>  
+				                    <f:selectItem itemLabel="Canada" itemValue="Canada"/>
+				                    <f:selectItem itemLabel="Belgium" itemValue="Belgium"/>
+				                </p:selectOneMenu>
+				                
+				                <h3 class="p-mt-0">Your Opinion:</h3>
+				                <p:inputTextarea rows="6" cols="33" id="opinion" value="#{helloBean.opinion}"/>
+				                
+				                <h3 class="p-mt-0">Prefer:</h3>
+				                <p:selectOneButton value="#{helloBean.option}">
+						            <f:selectItem itemLabel="PC" itemValue="PC" />
+						            <f:selectItem itemLabel="PS" itemValue="PS" />
+						            <f:selectItem itemLabel="XBOX" itemValue="XBOX" />
+						        </p:selectOneButton>
+				                 
+				                <h3 class="p-mt-0">Your Signature:</h3>  
+		       	                <p:signature style="width:300px;height:150px" widgetVar="sig" value="#{helloBean.sign}" guideline="true"/>	 				
+							</p:panelGrid>
+							<br/>
+								<p:commandButton value="Test" icon="pi pi-check" action="#{helloBean.test}" update="@form" oncomplete="handleForm(xhr, status, args)" styleClass="rounded-button ui-button-warning"/>								
+								<p:commandButton value="Save and Show"  action="#{helloBean.makeVisible}"  update="@form" icon="pi pi-save" styleClass="rounded-button ui-button-success" />
+								<p:commandButton value="Hide"  action="#{helloBean.makeUnvisible}"  update="@form" icon="pi pi-times" styleClass="rounded-button ui-button-secondary"/>	
+								<p:commandButton value="Clear"  action="#{helloBean.controlDatas}"  update="@form" icon="pi pi-trash" styleClass="rounded-button ui-button-help "/>
+								<p:commandButton value="Clear Sign" icon="pi pi-refresh" type="button" onclick="PF('sig').clear()" styleClass="rounded-button ui-button-info"/>
+							 </h:panelGroup>
+					 </p:panel>
+					 <p:separator/>  	
+				 <p:spotlight target="basic" widgetVar="spot"/>
+				
+		    
+		   		<h:panelGroup id="panelAccordion" styleClass="p-mb-5" rendered="#{helloBean.render}">
+				    <p:accordionPanel id="panel"  style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; ">
+				        <p:tab title="Name">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <h:outputText for="name"   value="#{helloBean.name}" />
+				            </h:panelGrid>
+				        </p:tab>
+				        <p:tab title="Surname">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <h:outputText for="surname" value="#{helloBean.surname}" />
+				            </h:panelGrid>
+				        </p:tab>
+				        <p:tab title="Password">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <h:outputText for="password" value="#{helloBean.password}" />
+				            </h:panelGrid>
+				        </p:tab>
+				        <p:tab title="Birthday">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <h:outputText  for="birthday" value="#{helloBean.birthday}" />
+				            </h:panelGrid>
+				        </p:tab>
+				        <p:tab title="Phone">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <h:outputText for="phone" value="#{helloBean.phone}" />
+				            </h:panelGrid>
+				        </p:tab>
+				        <p:tab title="Gender">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <h:outputText for="gender" value="#{helloBean.gender}" />
+				            </h:panelGrid>
+				        </p:tab>
+				        <p:tab title="Marriage">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <h:outputText for="marriage" value="#{helloBean.marriage}" />
+				            </h:panelGrid>
+				        </p:tab>
+				        <p:tab title="Country">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <h:outputText for="country" value="#{helloBean.selectedOption}" />
+				            </h:panelGrid>
+				        </p:tab>
+				        <p:tab title="Opinion">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <h:outputText for="opinion" value="#{helloBean.opinion}" />
+				            </h:panelGrid>
+				        </p:tab>
+				        <p:tab title="Sign">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <p:outputPanel id="output">
+							        <h:outputText rendered="#{not empty helloBean.sign}" style="font-size:24px;display:block" value="Your Signature" />
+							        <p:signature style="width:400px;height:200px;" value="#{helloBean.sign}" readonly="true"
+							                     rendered="#{not empty helloBean.sign}" backgroundColor="#eaeaea" color="#03a9f4"/>
+							    </p:outputPanel>
+				            </h:panelGrid>
+				        </p:tab>
+				        <p:tab title="Option">
+				            <h:panelGrid columns="2" cellpadding="2">
+				                <h:outputText for="option" value="#{helloBean.option}" />
+				            </h:panelGrid>
+				        </p:tab>
+				    </p:accordionPanel>
+				    <p:separator/>
+			    </h:panelGroup>
+			      	
+			    <br/>
+				<br/>
+
+			    <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+		     </h:form> 
+		     
+		     <h:form>
+	  			 <p:panel id="panell" header="Welcome"  style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px;background-color: #E7F6F2;">	  			 			     
+					 	<h:panelGrid id="grid" columns="2" cellpadding="5">
+					        
+						        <h3 class="p-mt-0">Name:</h3>  
+							    <p:inputText id="name1" value="#{helloBean.name1}" required="true" />
+					            
+					            <h3 class="p-mt-0">Password:</h3>  
+							    <p:inputText id="password1" value="#{helloBean.password1}" required="true" type="password"/>
+							    
+							    <h:column></h:column>
+							    
+			  					<p:commandButton value="Login"  update="@form" action="#{helloBean.showMessageLogin}" icon="pi pi-users"  styleClass="rounded-button ui-button-danger"/>
+		  					
+		  				</h:panelGrid>	
+			     </p:panel>
+		    </h:form>
+		</div>
+		<p:separator/>  	
+		
+		   
+		<div class="ui-fluid">
+			<h:form id="form">
+				 <p:growl >
+			        <p:autoUpdate />
+			    </p:growl>
+		        
+		        <p:panel id="basic" header="Personal Information"    style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; background-color: #E7F6F2;"  >
+		        	<h:panelGroup header="Kişisel Bilgiler" id="panel1" styleClass="p-mb-5" >
+				        <p:panelGrid columns="4"   >
+				          
+					    	<h:form>
+						      
+						      	<div style="margin-left:1550px;">
+									<p:commandButton icon="pi pi-arrow-down" 	ajax="false"  styleClass="rounded-button ui-button-warning">
+					                    <p:dataExporter type="xls" target="tbl" fileName="Person" />
+					                </p:commandButton>
+								</div>
+								<br/>
+						      
+							      <p:dataTable id="tbl" var="person" value="info">
+								  	<p:column>
+										<f:facet name="header">
+											<h:outputText value="Name" />
+										</f:facet>
+										<h:outputText value="deneme" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="Surname" />
+										</f:facet>
+										<h:outputText value="deneme" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="Password" />
+										</f:facet>
+										<h:outputText value="deneme" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="Birthday" />
+										</f:facet>
+										<h:outputText value="deneme" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="Phone" />
+										</f:facet>
+										<h:outputText value="deneme" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="Gender" />
+										</f:facet>
+										<h:outputText value="deneme" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="Marriage" />
+										</f:facet>
+										<h:outputText value="deneme" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="Country" />
+										</f:facet>
+										<h:outputText value="deneme" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="Prefer" />
+										</f:facet>
+										<h:outputText value="deneme" />
+									</p:column>>		
+								</p:dataTable>	
+							</h:form>
+						</p:panelGrid>
+				</h:panelGroup>
+			 </p:panel>	
+			</h:form>			
+        </div>	 
+        <p:separator/>  	
+		
+		<h:form id="form55" style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; ">
+			<p:panel id="basic" header="Personal Information"     >
+			
+				<p:commandButton  value="EXCEL" icon="pi pi-arrow-down" ajax="false" styleClass="rounded-button ui-button-warning">
+				    <p:dataExporter type="xls" target="tbl2" fileName="Person" />
+				</p:commandButton>
+				<p:commandButton value="PDF" icon="pi pi-arrow-down" ajax="false" styleClass="rounded-button ui-button-success" >
+			        <p:dataExporter type="pdf" target="tbl2" fileName="Person"/>
+			    </p:commandButton>
+			    <p:commandButton value="CSV" icon="pi pi-arrow-down" ajax="false" styleClass="rounded-button ui-button-info" >
+			        <p:dataExporter type="csv" target="tbl2" fileName="Person"/>
+			    </p:commandButton>
+			    <p:commandButton value="XML" icon="pi pi-arrow-down" ajax="false" styleClass="rounded-button ui-button-help" >
+			        <p:dataExporter type="xml" target="tbl2" fileName="Person"/>
+			    </p:commandButton>
+			    
+			    <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+			    
+		        <p:dataTable id="tbl2"   
+		            value = "#{helloBean.employees}" 
+		            selectionMode="single"  
+		            rowKey="#{employee.name2}"  
+		            var="employee" 
+		            selection="#{helloBean.selectedEmp}"
+		            styleClass = "employeeTable"
+		            headerClass = "employeeTableHeader"
+		            rowClasses = "employeeTableOddRow,employeeTableEvenRow"> 
+		            
+		            <p:ajax event="rowSelect" update=":form55:empDetail"/>
+		            
+		            
+		            <p:column>
+						<f:facet name="header">
+							<h:outputText value="Name" />
+						</f:facet>
+						<h:outputText value="#{employee.name2}" /> 
+					</p:column>
+		            
+		             <p:column>
+						<f:facet name="header">
+							<h:outputText value="Department" />
+						</f:facet>
+						<h:outputText value="#{employee.department}" />
+					</p:column>>
+		            
+		            <p:column>
+						<f:facet name="header">
+							<h:outputText value="Age" />
+						</f:facet>
+						<h:outputText value="#{employee.age}" />
+					</p:column>>
+		            
+		            <p:column>
+						<f:facet name="header">
+							<h:outputText value="Salary" />
+						</f:facet>
+						<h:outputText value="#{employee.salary}" />
+					</p:column>	
+					
+					<p:column style="width:50px;text-align: center">
+						<f:facet name="header">
+							<h:outputText value="Delete" />
+						</f:facet>
+						<p:commandButton 
+							update=":form55:tbl2"  
+							icon="pi pi-times"  
+							styleClass="ui-button-danger"
+							action="#{helloBean.deleteEmployee}">                
+		                  <f:setPropertyActionListener value="#{employee}" target="#{helloBean.employee}" />
+		               </p:commandButton>
+					</p:column>	
+					
+					<p:column style="width:50px;text-align: center">
+					<f:facet name="header">
+							<h:outputText value="Show" />
+						</f:facet>
+			             <p:commandButton   
+				             styleClass="ui-button-help"  
+				             update=":form55:empDetail" 
+				             oncomplete="PF('carDialog').show()" 
+				             icon="pi pi-search" 
+				             title="View">
+			                <f:setPropertyActionListener value="#{employee}" target="#{helloBean.selectedEmp}" />
+			            </p:commandButton>
+			        </p:column>
+			        
+		         </p:dataTable>
+		      </p:panel>	
+         	 
+		    <br/> <br/> <br/> 
+		     <p:dialog header="Employee Info" widgetVar="carDialog" modal="true"  showEffect="explode" hideEffect="explode" resizable="false">
+		        <p:outputPanel id="empDetail" style="text-align:center;">
+		            <p:panelGrid  columns="2"  columnClasses="label,value">
+		                 
+		                <h:outputText value="Name:"  />
+		                <h:outputText value="#{helloBean.selectedEmp.name2}" />
+		 
+		                <h:outputText value="Department:" />
+		                <h:outputText value="#{helloBean.selectedEmp.department}" />
+		 
+		                <h:outputText value="Age:" />
+		                <h:outputText value="#{helloBean.selectedEmp.age}"/>
+		             
+		                <h:outputText value="Salary:" />
+		                <h:outputText value="$#{helloBean.selectedEmp.salary}" />
+		            </p:panelGrid>
+		        </p:outputPanel>
+		    </p:dialog>
+		    
+		    <p:panel id="panell2" header="Show Details"  >	  			 			     
+				<h:panelGrid id="grid2" columns="6" cellpadding="5">
+					        
+					<p:linkButton outcome="Users.xhtml" value="Go Details" icon="pi pi-plus"  styleClass="rounded-button ui-button-danger">
+				    </p:linkButton>
+	
+				    
+				    <p:linkButton outcome="Users2.xhtml" value="John" action="#{helloBean.makeVisible1}"   icon="pi pi-plus"  styleClass="rounded-button ui-button-warning">
+				    </p:linkButton>
+				    <p:linkButton outcome="Users2.xhtml" value="Robert" action="#{helloBean.makeVisible2}"  icon="pi pi-plus"  styleClass="rounded-button ui-button-warning">
+				    </p:linkButton>
+				    <p:linkButton outcome="Users2.xhtml" value="Mark" action="#{helloBean.makeVisible3}"  icon="pi pi-plus"  styleClass="rounded-button ui-button-warning">
+				    </p:linkButton>
+				    <p:linkButton outcome="Users2.xhtml" value="Chris" action="#{helloBean.makeVisible4}"  icon="pi pi-plus"  styleClass="rounded-button ui-button-warning">
+				    </p:linkButton>
+				    <p:linkButton outcome="Users2.xhtml" value="Peter" action="#{helloBean.makeVisible5}"  icon="pi pi-plus"  styleClass="rounded-button ui-button-warning">
+				    </p:linkButton>
+				    
+					    
+					<h:column></h:column>
+				
+		  	  </h:panelGrid>				
+		  </p:panel>
+		     <br/><p:separator/>
+		
+			<br/><br/>
+			<p:panel id="panell" header="Add"  >	  			 			     
+				<h:panelGrid id="grid" columns="2" cellpadding="5">
+					        
+					<h3 class="p-mt-0">Name:</h3>  
+					<p:inputText id="name2"  value = "#{helloBean.name2}" />
+					            
+					<h3 class="p-mt-0">Department:</h3>  
+					<p:inputText id="password2" value = "#{helloBean.dept}"   />
+							    
+					<h3 class="p-mt-0">Age:</h3>  
+					<p:inputText id="age" value = "#{helloBean.age}"   />
+							    
+					<h3 class="p-mt-0">Salary:</h3>  
+					<p:inputText id="salary" value = "#{helloBean.salary}"  />
+							    
+					<h:column></h:column>
+							    
+			  		<p:commandButton  value = "Add Employee" 
+                  	action = "#{helloBean.addEmployee}"   update="@form"  
+                  	icon="pi pi-plus"  styleClass="rounded-button ui-button-danger"/>
+		  					
+		  	  </h:panelGrid>				
+		  </p:panel>
+      	</h:form>   
+      	<p:separator/>  		
+    </h:body>
+    
+    <footer style="position: fixed;
+	  left: 0;
+	  bottom: 0;
+	  width: 100%;
+	  background-color:#E2DCC8;
+	  color: black;
+	  text-align: center;">
+		OĞUZHAN PORTAKAL
+	</footer>
+</html>
+

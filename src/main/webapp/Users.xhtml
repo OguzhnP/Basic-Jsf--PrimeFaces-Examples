@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+>
+    <h:head>
+        <title>My Fİrst JSF</title>
+    </h:head>
+    <h:body style="background-color:#E2DCC8;">
+    
+    
+		<div>
+				<h:form style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; background-color: #E7F6F2;">
+			        <p:breadCrumb>
+			            <p:menuitem outcome="Index.xhtml" value="Home"/>
+			        </p:breadCrumb>
+			    </h:form>
+			</div>
+			
+			<div class="card">
+			     <h:form style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; ">
+			          <p:commandButton value="John"  update="@form" action="#{helloBean.makeVisible1}" icon="pi pi-users"  styleClass="rounded-button ui-button-success"/>
+			         
+			          <h:panelGroup id="qwe"   styleClass="p-mb-5" rendered="#{helloBean.render1}">	
+			          <p:commandButton action="#{helloBean.makeUnvisible1}"  update="@form" icon="pi pi-times" styleClass="rounded-button ui-button-secondary"/>	
+			          
+			         <p:dataTable id="tbl2" value = "#{helloBean.employees[0]}" var = "employee"
+			            styleClass = "employeeTable"
+			            headerClass = "employeeTableHeader"
+			            rowClasses = "employeeTableOddRow,employeeTableEvenRow">
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
+							 <h:outputText value="#{employee.name2}" />
+						</p:column>
+			            
+			             <p:column>
+							<f:facet name="header">
+								<h:outputText value="Department" />
+							</f:facet>
+							<h:outputText value="#{employee.department}" />
+						</p:column>>
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Age" />
+							</f:facet>
+							<h:outputText value="#{employee.age}" />
+						</p:column>>
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Salary" />
+							</f:facet>
+							<h:outputText value="#{employee.salary}" />
+						</p:column>	
+			         </p:dataTable>
+			         </h:panelGroup>
+      			</h:form>   
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+
+
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			 <h:form style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; " >
+			      	 <p:commandButton value="Robert"  update="@form" action="#{helloBean.makeVisible2}" icon="pi pi-users"  styleClass="rounded-button ui-button-success"/>
+			        
+			          <h:panelGroup id="qwe"   styleClass="p-mb-5" rendered="#{helloBean.render2}">		
+			            <p:commandButton action="#{helloBean.makeUnvisible2}"  update="@form" icon="pi pi-times" styleClass="rounded-button ui-button-secondary"/>
+			         <p:dataTable id="tbl2" value = "#{helloBean.employees[1]}" var = "employee"
+			            styleClass = "employeeTable"
+			            headerClass = "employeeTableHeader"
+			            rowClasses = "employeeTableOddRow,employeeTableEvenRow">
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
+							 <h:outputText value="#{employee.name2}" />
+						</p:column>
+			            
+			             <p:column>
+							<f:facet name="header">
+								<h:outputText value="Department" />
+							</f:facet>
+							<h:outputText value="#{employee.department}" />
+						</p:column>>
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Age" />
+							</f:facet>
+							<h:outputText value="#{employee.age}" />
+						</p:column>>
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Salary" />
+							</f:facet>
+							<h:outputText value="#{employee.salary}" />
+						</p:column>	
+			         </p:dataTable>
+			         </h:panelGroup>
+      			</h:form> 
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+
+
+ 
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			 <h:form style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; " >
+					 <p:commandButton value="Mark"  update="@form" action="#{helloBean.makeVisible3}" icon="pi pi-users"  styleClass="rounded-button ui-button-success"/>
+			          <h:panelGroup id="qwe"   styleClass="p-mb-5" rendered="#{helloBean.render3}">		
+			            <p:commandButton action="#{helloBean.makeUnvisible3}"  update="@form" icon="pi pi-times" styleClass="rounded-button ui-button-secondary"/>	       
+			         <p:dataTable id="tbl2" value = "#{helloBean.employees[2]}" var = "employee"
+			            styleClass = "employeeTable"
+			            headerClass = "employeeTableHeader"
+			            rowClasses = "employeeTableOddRow,employeeTableEvenRow">
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
+							 <h:outputText value="#{employee.name2}" />
+						</p:column>
+			            
+			             <p:column>
+							<f:facet name="header">
+								<h:outputText value="Department" />
+							</f:facet>
+							<h:outputText value="#{employee.department}" />
+						</p:column>>
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Age" />
+							</f:facet>
+							<h:outputText value="#{employee.age}" />
+						</p:column>>
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Salary" />
+							</f:facet>
+							<h:outputText value="#{employee.salary}" />
+						</p:column>	
+			         </p:dataTable>
+			         </h:panelGroup>
+      			</h:form> 
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+
+
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			 <h:form style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; " >
+      			 <p:commandButton value="Chris"  update="@form" action="#{helloBean.makeVisible4}" icon="pi pi-users"  styleClass="rounded-button ui-button-success"/>
+			          <h:panelGroup id="qwe"   styleClass="p-mb-5" rendered="#{helloBean.render4}">
+			           <p:commandButton action="#{helloBean.makeUnvisible4}"  update="@form" icon="pi pi-times" styleClass="rounded-button ui-button-secondary"/>
+			         <p:dataTable id="tbl2" value = "#{helloBean.employees[3]}" var = "employee"
+			            styleClass = "employeeTable"
+			            headerClass = "employeeTableHeader"
+			            rowClasses = "employeeTableOddRow,employeeTableEvenRow">
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
+							 <h:outputText value="#{employee.name2}" />
+						</p:column>
+			            
+			             <p:column>
+							<f:facet name="header">
+								<h:outputText value="Department" />
+							</f:facet>
+							<h:outputText value="#{employee.department}" />
+						</p:column>>
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Age" />
+							</f:facet>
+							<h:outputText value="#{employee.age}" />
+						</p:column>>
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Salary" />
+							</f:facet>
+							<h:outputText value="#{employee.salary}" />
+						</p:column>	
+			         </p:dataTable>
+			          </h:panelGroup>
+      			</h:form> 
+      			
+      			
+      			
+      			
+      			
+      			
+      		
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			
+      			 <h:form  style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; " >
+      			 
+      			 	<p:commandButton value="Peter"  update="@form" action="#{helloBean.makeVisible5}" icon="pi pi-users"  styleClass="rounded-button ui-button-success"/>
+      				 <h:panelGroup id="qwe"   styleClass="p-mb-5" rendered="#{helloBean.render5}">
+      				   <p:commandButton action="#{helloBean.makeUnvisible5}"  update="@form" icon="pi pi-times" styleClass="rounded-button ui-button-secondary"/>
+			         <p:dataTable id="tbl2" value = "#{helloBean.employees[4]}" var = "employee"
+			            styleClass = "employeeTable"
+			            headerClass = "employeeTableHeader"
+			            rowClasses = "employeeTableOddRow,employeeTableEvenRow">
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
+							 <h:outputText value="#{employee.name2}" />
+						</p:column>
+			            
+			             <p:column>
+							<f:facet name="header">
+								<h:outputText value="Department" />
+							</f:facet>
+							<h:outputText value="#{employee.department}" />
+						</p:column>>
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Age" />
+							</f:facet>
+							<h:outputText value="#{employee.age}" />
+						</p:column>>
+			            
+			            <p:column>
+							<f:facet name="header">
+								<h:outputText value="Salary" />
+							</f:facet>
+							<h:outputText value="#{employee.salary}" />
+						</p:column>	
+			         </p:dataTable>
+			         </h:panelGroup>
+      			</h:form> 
+			</div>
+			
+			
+			
+			
+    </h:body>
+    <footer style="position: fixed;
+	  left: 0;
+	  bottom: 0;
+	  width: 100%;
+	  background-color:#E2DCC8;
+	  color: black;
+	  text-align: center;">
+		OĞUZHAN PORTAKAL
+	</footer>
+</html>
+
+ 

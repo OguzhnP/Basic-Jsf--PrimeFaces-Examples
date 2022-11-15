@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+>
+    <h:head>
+        <title>My Fİrst JSF</title>
+    </h:head>
+    <h:body style="background-color:#E2DCC8;">
+    <script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
+
+			<div>
+				<h:form style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; background-color: #E7F6F2;">
+			        <p:breadCrumb>
+			            <p:menuitem outcome="Index.xhtml" value="Home"/>
+			            <p:menuitem outcome="Login.xhtml" value="Log In"/>
+			            <p:menuitem outcome="ShowDoc.xhtml" value="Show Documentation"/>
+			             <p:menuitem outcome="Upload.xhtml" value="Upload Image"/>
+			        </p:breadCrumb>
+			    </h:form>
+
+			</div>
+			
+			
+  			<div class="card" >
+		    
+  			<h:form>
+	  			 <p:panel id="panell" header="Welcome" style="margin-bottom:20px">	  			 			     
+					 	<h:panelGrid id="grid" columns="2" cellpadding="5">
+					        
+						        <h3 class="p-mt-0">Name:</h3>  
+							    <p:inputText id="name1" value="#{helloBean.name1}" required="true" />
+					            
+					            <h3 class="p-mt-0">Password:</h3>  
+							    <p:inputText id="password1" value="#{helloBean.password1}" required="true" type="password"/>
+							    
+							    <h:column></h:column>
+							    
+			  					<p:commandButton value="Login"  update="@form" action="#{helloBean.showMessageLogin}" icon="pi pi-users"  styleClass="rounded-button ui-button-danger"/>
+		  					
+		  				</h:panelGrid>	
+			     </p:panel>
+		    </h:form>
+		    
+		</div>
+    </h:body>
+    <footer style="position: fixed;
+	  left: 0;
+	  bottom: 0;
+	  width: 100%;
+	  background-color:#E2DCC8;
+	  color: black;
+	  text-align: center;">
+		OĞUZHAN PORTAKAL
+	</footer>
+</html>
+
+ 

@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+>
+    <h:head>
+        <title>My Fİrst JSF</title>
+    </h:head>
+    <h:body style="background-color:#E2DCC8;">
+
+			<div>
+				<h:form style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; background-color: #E7F6F2;">
+			        <p:breadCrumb>
+			            <p:menuitem outcome="Index.xhtml" value="Home"/>
+			            <p:menuitem outcome="Login.xhtml" value="Log In"/>
+			            <p:menuitem outcome="ShowDoc.xhtml" value="Show Documentation"/>
+			            <p:menuitem outcome="Upload.xhtml" value="Upload Image"/>
+			        </p:breadCrumb>
+			    </h:form>
+			</div>
+			
+				<!-- <h:form enctype="multipart/form-data"  style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; ">
+					<p:fileUpload value="#{helloBean.file1}" ></p:fileUpload>
+					
+					<p:separator/>  	
+					
+				</h:form>  -->
+				
+				<h:form id="form3"  style="margin-bottom:40px;margin-top:40px; margin-left:40px;margin-right:40px; ">
+				<p:growl id="messages1" showDetail="true" autoUpdate="true"/>        
+				    <p:fileUpload value="#{helloBean.file1}" skinSimple="true" />
+				    <br /><p:separator/>  
+				    <p:commandButton value="Submit" action="#{helloBean.handleFileUpload1}" update="messages1" />
+				</h:form>
+				
+				 <p:graphicImage value="#{helloBean.image}" />
+				 
+				 
+				 
+			
+			
+			
+    </h:body>
+    <footer style="position: fixed;
+	  left: 0;
+	  bottom: 0;
+	  width: 100%;
+	  background-color:#E2DCC8;
+	  color: black;
+	  text-align: center;">
+		OĞUZHAN PORTAKAL
+	</footer>
+</html>
+
+ 
